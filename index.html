@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Furaxpark Academy | Learning With Fun | Lusaka West</title>
+    
+    <!-- Google Fonts + Bootstrap 5 + Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            background: #fefefe;
+            color: #1e2a36;
+            scroll-padding-top: 80px;
+        }
+        /* Navbar */
+        .navbar {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            padding: 0.8rem 0;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+        }
+        .navbar-brand span { color: #ff8c00; background: none; }
+        .nav-link {
+            font-weight: 600;
+            color: #1e2a36 !important;
+            margin: 0 0.5rem;
+            transition: 0.3s;
+        }
+        .nav-link:hover { color: #ff8c00 !important; transform: translateY(-2px); }
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; }
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+            border-radius: 50px;
+            padding: 12px 28px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-whatsapp:hover { background: #128C7E; transform: scale(1.02); color: white; }
+        .btn-outline-light:hover { background: #ff8c00; border-color: #ff8c00; }
+        /* Section titles */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: #ff8c00;
+            margin: 12px auto 0;
+            border-radius: 3px;
+        }
+        /* Cards */
+        .service-card, .nurture-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            height: 100%;
+            border: 1px solid #e9ecef;
+        }
+        .service-card:hover, .nurture-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+            border-color: #ff8c00;
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            color: #ff8c00;
+            margin-bottom: 1rem;
+        }
+        .school-img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); background: #128C7E; }
+        footer {
+            background: #1e2a36;
+            color: #cfd8dc;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Furaxpark <span>Academy</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#offer">What We Offer</a></li>
+                <li class="nav-item"><a class="nav-link" href="#nurture">Nurture Genius</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="hero">
+    <div class="container">
+        <h1>Learning With Fun</h1>
+        <p>Are you looking for a school that sparks curiosity and creativity? Look no further than FuraxPark Academy.</p>
+        <a href="https://wa.me/260972840960" class="btn btn-whatsapp me-2" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+        <a href="#contact" class="btn btn-outline-light">Contact Us</a>
+    </div>
+</section>
+
+<!-- About / Description -->
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="section-title text-start" style="text-align:left;">Welcome to Furaxpark Family</h2>
+                <p style="color: black;" class="lead">We're not just a school – we're a community! Join the FuraxPark Academy family and experience the difference for yourself!</p>
+                <p style="color: black;">We are thrilled to welcome our learners back to Furaxpark Academy in a special way! Our students are beaming with excitement as they reunite with friends and teachers, and we're honored to share in their joy.</p>
+                <p style="color: black;"><i class="fas fa-map-marker-alt text-warning"></i> <strong>Location:</strong> Lusaka West, Off Mungwi Road</p>
+                <p style="color: black;"><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> +260 972 840960 / +260 970 3491919</p>
+                <p style="color: black;"><i class="fas fa-envelope"></i> <strong>Email:</strong> furaxgeneral@gmail.com</p>
+            </div>
+            <div class="col-lg-6">
+                <img src="images/furax.jpg" class="school-img" alt="Furaxpark Academy">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What We Offer (Main Academic Levels) -->
+<section id="offer" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">What We Offer</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="service-card text-center p-4">
+                    <i class="fas fa-baby-carriage card-icon"></i>
+                    <h4>Baby Class</h4>
+                    <p>Nurturing environment for our youngest learners.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card text-center p-4">
+                    <i class="fas fa-child card-icon"></i>
+                    <h4>Middle Class</h4>
+                    <p>Building foundational skills with play-based learning.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card text-center p-4">
+                    <i class="fas fa-graduation-cap card-icon"></i>
+                    <h4>Reception</h4>
+                    <p>Preparing for primary with confidence and curiosity.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mx-auto">
+                <div class="service-card text-center p-4">
+                    <i class="fas fa-book-open card-icon"></i>
+                    <h4>Grade 1 – 6</h4>
+                    <p>Strong academic foundation in a supportive community.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Uploaded image: place your furax park.jpg here -->
+        <div class="text-center mt-5">
+           
+            <p class="text-muted mt-2">Our signature programs – Nurture Genius at a glance</p>
+        </div>
+    </div>
+</section>
+
+<!-- Nurture Genius Section (Special Programs) -->
+<section id="nurture" class="py-5">
+    <div class="container">
+        <h2 class="section-title">Nurture Genius Programs</h2>
+        <p class="text-center mb-5">Beyond the standard curriculum – unlocking every child's potential.</p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="nurture-card p-4">
+                    <i class="fas fa-globe card-icon"></i>
+                    <h5>Global Language Mastery Program</h5>
+                    <p>Multi-language exposure for global readiness.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="nurture-card p-4">
+                    <i class="fas fa-calculator card-icon"></i>
+                    <h5>Master Numeracy Program</h5>
+                    <p>Exceptional results through advanced math strategies.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="nurture-card p-4">
+                    <i class="fas fa-music card-icon"></i>
+                    <h5>Melodic Minds</h5>
+                    <p>Unleashing musical talent through instruments and voice.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="nurture-card p-4">
+                    <i class="fas fa-language card-icon"></i>
+                    <h5>French Immersive Learning</h5>
+                    <p>Full French language immersion for fluency.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="nurture-card p-4">
+                    <i class="fas fa-palette card-icon"></i>
+                    <h5>Artistic Visionaries</h5>
+                    <p>Fostering creativity through drawing, painting, and design.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="nurture-card p-4">
+                    <i class="fas fa-drafting-compass card-icon"></i>
+                    <h5>Technical Drawing & Skills Development</h5>
+                    <p>Building precision and engineering mindset early.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact & Map -->
+<section id="contact" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="bg-white p-4 rounded shadow-sm">
+                    <h4><i class="fab fa-whatsapp text-success"></i> WhatsApp & Call</h4>
+                    <p><strong>+260 972 840960</strong><br><strong>+260 970 3491919</strong></p>
+                    <a href="https://wa.me/260972840960" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Message on WhatsApp</a>
+                    <hr>
+                    <p><i class="fas fa-map-marker-alt"></i> Lusaka West, Off Mungwi Road, Lusaka, Zambia</p>
+                    <p><i class="fas fa-envelope"></i> furaxgeneral@gmail.com</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="bg-white p-4 rounded shadow-sm">
+                    <h4>Find Us</h4>
+                    <div class="ratio ratio-16x9 mt-2">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.5!2d28.322817!3d-15.387526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1940f2f5b0c4a2b3%3A0x3b4c5d6e7f8a9b0c!2sLusaka!5e0!3m2!1sen!2szm!4v1234567890" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container text-center">
+        <p>&copy; 2025 Furaxpark Academy – Learning With Fun. All rights reserved.</p>
+        <p><i class="fas fa-heart text-danger"></i> Empowering curious minds in Lusaka West</p>
+    </div>
+</footer>
+
+<a href="https://wa.me/260972840960" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
