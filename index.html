@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Furaxpark Academy | Learning With Fun | Lusaka West</title>
-    
-    <!-- Google Fonts + Bootstrap 5 + Font Awesome -->
+    <!-- Bootstrap 5 + Icons + Google Fonts -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Swiper CSS for carousel (lightweight alternative to Bootstrap carousel with better touch) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
-            background: #fefefe;
+            font-family: 'Inter', sans-serif;
+            background: #fff;
             color: #1e2a36;
             scroll-padding-top: 80px;
         }
@@ -41,28 +42,51 @@
             transition: 0.3s;
         }
         .nav-link:hover { color: #ff8c00 !important; transform: translateY(-2px); }
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
-            padding: 100px 0 80px;
-            text-align: center;
+        /* Hero Carousel */
+        .hero-carousel {
+            margin-top: 76px;
         }
-        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
-        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; }
+        .swiper-slide {
+            height: 85vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .swiper-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+        .slide-content {
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            z-index: 2;
+            color: white;
+            max-width: 600px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .slide-content h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+        .slide-content p { font-size: 1.2rem; margin-bottom: 1.5rem; }
         .btn-whatsapp {
             background: #25d366;
             color: white;
             border-radius: 50px;
-            padding: 12px 28px;
+            padding: 10px 24px;
             font-weight: 600;
             transition: 0.3s;
+            border: none;
         }
-        .btn-whatsapp:hover { background: #128C7E; transform: scale(1.02); color: white; }
+        .btn-whatsapp:hover { background: #128C7E; transform: scale(1.02); }
         .btn-outline-light:hover { background: #ff8c00; border-color: #ff8c00; }
         /* Section titles */
         .section-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: #1e3c72;
             margin-bottom: 2rem;
@@ -82,26 +106,24 @@
         .service-card, .nurture-card {
             background: white;
             border-radius: 24px;
-            overflow: hidden;
+            padding: 1.8rem;
+            text-align: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             transition: 0.3s;
             height: 100%;
-            border: 1px solid #e9ecef;
+            border: 1px solid #eef2f6;
         }
         .service-card:hover, .nurture-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 20px 35px rgba(0,0,0,0.1);
             border-color: #ff8c00;
         }
-        .card-icon {
-            font-size: 2.5rem;
-            color: #ff8c00;
-            margin-bottom: 1rem;
-        }
+        .card-icon { font-size: 2.5rem; color: #ff8c00; margin-bottom: 1rem; }
+        /* School image */
         .school-img {
             width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         .whatsapp-float {
             position: fixed;
@@ -128,14 +150,16 @@
             margin-top: 3rem;
         }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .section-title { font-size: 1.6rem; }
+            .swiper-slide { height: 60vh; }
+            .slide-content { bottom: 10%; left: 5%; }
+            .slide-content h1 { font-size: 1.8rem; }
+            .section-title { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-
+<!-- Navigation -->
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#">Furaxpark <span>Academy</span></a>
@@ -154,120 +178,146 @@
     </div>
 </nav>
 
-<!-- Hero -->
-<section id="home" class="hero">
-    <div class="container">
-        <h1>Learning With Fun</h1>
-        <p>Are you looking for a school that sparks curiosity and creativity? Look no further than FuraxPark Academy.</p>
-        <a href="https://wa.me/260972840960" class="btn btn-whatsapp me-2" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
-        <a href="#contact" class="btn btn-outline-light">Contact Us</a>
+<!-- Hero Carousel (Sliding Images) -->
+<section id="home" class="hero-carousel">
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide" style="background-image: url('https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+                <div class="slide-content">
+                    <h1>Learning With Fun</h1>
+                    <p>Are you looking for a school that sparks curiosity and creativity? Look no further.</p>
+                    <a href="https://wa.me/260972840960" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="swiper-slide" style="background-image: url('https://images.pexels.com/photos/5212695/pexels-photo-5212695.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+                <div class="slide-content">
+                    <h1>Nurture Genius</h1>
+                    <p>Global Language Mastery • Master Numeracy • Melodic Minds • French Immersion • Artistic Visionaries • Technical Drawing</p>
+                    <a href="#nurture" class="btn btn-outline-light">Explore Programs</a>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="swiper-slide" style="background-image: url('https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+                <div class="slide-content">
+                    <h1>Join Our Community</h1>
+                    <p>We're not just a school – we're a family. Enroll today for Baby Class to Grade 6.</p>
+                    <a href="#contact" class="btn btn-whatsapp">Contact Us</a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
 </section>
 
-<!-- About / Description -->
+<!-- About Section -->
 <section id="about" class="py-5">
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-center g-5">
             <div class="col-lg-6">
                 <h2 class="section-title text-start" style="text-align:left;">Welcome to Furaxpark Family</h2>
-                <p style="color: black;" class="lead">We're not just a school – we're a community! Join the FuraxPark Academy family and experience the difference for yourself!</p>
-                <p style="color: black;">We are thrilled to welcome our learners back to Furaxpark Academy in a special way! Our students are beaming with excitement as they reunite with friends and teachers, and we're honored to share in their joy.</p>
-                <p style="color: black;"><i class="fas fa-map-marker-alt text-warning"></i> <strong>Location:</strong> Lusaka West, Off Mungwi Road</p>
-                <p style="color: black;"><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> +260 972 840960 / +260 970 3491919</p>
-                <p style="color: black;"><i class="fas fa-envelope"></i> <strong>Email:</strong> furaxgeneral@gmail.com</p>
+                <p class="lead">We're not just a school – we're a community! Join the FuraxPark Academy family and experience the difference for yourself!</p>
+                <p>We are thrilled to welcome our learners back to Furaxpark Academy in a special way! Our students are beaming with excitement as they reunite with friends and teachers, and we're honored to share in their joy.</p>
+                <p><i class="fas fa-map-marker-alt text-warning"></i> <strong>Location:</strong> Lusaka West, Off Mungwi Road</p>
+                <p><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> +260 972 840960 / +260 970 3491919</p>
+                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> furaxgeneral@gmail.com</p>
+                <a href="https://wa.me/260972840960" class="btn btn-whatsapp mt-3"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
             </div>
             <div class="col-lg-6">
-                <img src="images/furax.jpg" class="school-img" alt="Furaxpark Academy">
+                <img src="https://images.pexels.com/photos/5212714/pexels-photo-5212714.jpeg?auto=compress&cs=tinysrgb&w=800" class="school-img" alt="Furaxpark Academy">
             </div>
         </div>
     </div>
 </section>
 
-<!-- What We Offer (Main Academic Levels) -->
+<!-- What We Offer -->
 <section id="offer" class="py-5 bg-light">
     <div class="container">
         <h2 class="section-title">What We Offer</h2>
         <div class="row g-4">
-            <div class="col-md-4">
-                <div class="service-card text-center p-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="service-card">
                     <i class="fas fa-baby-carriage card-icon"></i>
                     <h4>Baby Class</h4>
                     <p>Nurturing environment for our youngest learners.</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="service-card text-center p-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="service-card">
                     <i class="fas fa-child card-icon"></i>
                     <h4>Middle Class</h4>
                     <p>Building foundational skills with play-based learning.</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="service-card text-center p-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="service-card">
                     <i class="fas fa-graduation-cap card-icon"></i>
                     <h4>Reception</h4>
-                    <p>Preparing for primary with confidence and curiosity.</p>
+                    <p>Preparing for primary with confidence.</p>
                 </div>
             </div>
-            <div class="col-md-4 mx-auto">
-                <div class="service-card text-center p-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="service-card">
                     <i class="fas fa-book-open card-icon"></i>
                     <h4>Grade 1 – 6</h4>
                     <p>Strong academic foundation in a supportive community.</p>
                 </div>
             </div>
         </div>
-        <!-- Uploaded image: place your furax park.jpg here -->
+        <!-- Uploaded image (your furaxpark.jpg) -->
         <div class="text-center mt-5">
-           
-            <p class="text-muted mt-2">Our signature programs – Nurture Genius at a glance</p>
+            <img src="furaxpark.jpg" alt="Furaxpark Academy Programs" class="img-fluid rounded shadow" style="max-height: 400px; width: auto;">
+            <p class="text-muted mt-2">Our signature Nurture Genius programs at a glance</p>
         </div>
     </div>
 </section>
 
-<!-- Nurture Genius Section (Special Programs) -->
+<!-- Nurture Genius -->
 <section id="nurture" class="py-5">
     <div class="container">
         <h2 class="section-title">Nurture Genius Programs</h2>
         <p class="text-center mb-5">Beyond the standard curriculum – unlocking every child's potential.</p>
         <div class="row g-4">
             <div class="col-md-4">
-                <div class="nurture-card p-4">
+                <div class="nurture-card">
                     <i class="fas fa-globe card-icon"></i>
                     <h5>Global Language Mastery Program</h5>
                     <p>Multi-language exposure for global readiness.</p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="nurture-card p-4">
+                <div class="nurture-card">
                     <i class="fas fa-calculator card-icon"></i>
                     <h5>Master Numeracy Program</h5>
                     <p>Exceptional results through advanced math strategies.</p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="nurture-card p-4">
+                <div class="nurture-card">
                     <i class="fas fa-music card-icon"></i>
                     <h5>Melodic Minds</h5>
                     <p>Unleashing musical talent through instruments and voice.</p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="nurture-card p-4">
+                <div class="nurture-card">
                     <i class="fas fa-language card-icon"></i>
                     <h5>French Immersive Learning</h5>
                     <p>Full French language immersion for fluency.</p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="nurture-card p-4">
+                <div class="nurture-card">
                     <i class="fas fa-palette card-icon"></i>
                     <h5>Artistic Visionaries</h5>
                     <p>Fostering creativity through drawing, painting, and design.</p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="nurture-card p-4">
+                <div class="nurture-card">
                     <i class="fas fa-drafting-compass card-icon"></i>
                     <h5>Technical Drawing & Skills Development</h5>
                     <p>Building precision and engineering mindset early.</p>
@@ -313,6 +363,18 @@
 
 <a href="https://wa.me/260972840960" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
+<!-- Swiper JS + Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: { delay: 5000, disableOnInteraction: false },
+        pagination: { el: ".swiper-pagination", clickable: true },
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+        effect: "slide",
+        speed: 800
+    });
+</script>
 </body>
 </html>
